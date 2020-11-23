@@ -1,0 +1,14 @@
+version: "3"
+services:
+  server:
+    build: Server/
+    command: python ./MainServer.py
+    ports:
+      - 10000:10000
+
+  client:
+    build: Client/
+    command: python ./MainClient.py
+    network_mode: host
+    depends_on:
+      - server
